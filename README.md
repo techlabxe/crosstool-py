@@ -99,7 +99,7 @@ cd hello_pi
 cp hello_fft/makefile hello_fft/makefile.orig
 cat hello_fft/makefile.orig | sed -e "s,gcc,\$\(CC\),g" | sed -e "s,-lrt -lm,-lrt -lm -lpthread,g" > hello_fft/makefile
 #
-PATH=~/gcc48raspbian/bin:$PATH
+PATH=~/gcc48raspbian/bin:$PATH \
 CC=~/gcc48raspbian/bin/arm-linux-gnueabihf-gcc \
 AR=~/gcc48raspbian/bin/arm-linux-gnueabihf-ar \
 LDFLAGS='-ldl -Wl,-trace' \
