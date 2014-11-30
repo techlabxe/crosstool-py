@@ -3,7 +3,7 @@
 import shutil
 from optparse import OptionParser
 
-PREFIX='~/gcc48raspbian-mingw-w64-x86-64'
+PREFIX='~/gcc48raspbian-mingw-w64-x86_64'
 TARGET='arm-linux-gnueabihf'
 SRCROOT='~/work/src_root'
 TARGETROOT='~/work/target_root/raspbian20140909'
@@ -20,7 +20,7 @@ my_ver_gdb='7.8.1'
 # canadian cross
 my_ver_expat='2.1.0'
 
-build_dir='gcc48-host_mingw-w64-x86-64'
+build_dir='gcc48-host_mingw-w64-x86_64'
 
 
 import sys, os
