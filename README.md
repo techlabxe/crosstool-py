@@ -20,12 +20,13 @@ apt-get install bison texinfo
 apt-get install libncurses5-dev libexpat1-dev
 ```
 
-for host_mingw-w64-i686 and host_mingw64-x86-64
+for host_mingw-w64-i686 and host_mingw64-x86_64
 ```
 apt-get install mingw-w64 g++-mingw-w64 g++-mingw-w64-i686 g++-mingw-w64-x86-64
 ```
 
 Japan user:
+
 if you use 'jp.archive.ubuntu.com',
 'apt-get update' and 'apt-get install build-essential' doesn't work.(2014-11-29)
 
