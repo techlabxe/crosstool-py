@@ -193,6 +193,7 @@ class BuildModules(object):
     configure_args.append( '--without-headers' )
     configure_args.append( '--with-sysroot=%s/sys-root' % self.PREFIX )
     configure_args.append( '--with-zlib=%s/tmp-roothost' % self.PREFIX )
+    configure_args.append( '--disable-win32-registry' )
     self.configure_args_gcc_stage1_host=configure_args
 
     configure_args=[]
@@ -210,6 +211,7 @@ class BuildModules(object):
     configure_args.append( '--without-headers' )
     configure_args.append( '--with-sysroot=%s/sys-root' % self.PREFIX )
     configure_args.append( '--with-zlib=%s/tmp-roothost' % self.PREFIX )
+    configure_args.append( '--disable-win32-registry' )
     self.configure_args_gcc_stage2_host=configure_args
 
     configure_args=[]
@@ -446,6 +448,8 @@ class BuildModules(object):
     else:
       os.environ['CPPFLAGS']+=' '
     os.environ['CPPFLAGS']+='-I%s/tmp-roothost/include' % self.PREFIX
+    os.environ['CPPFLAGS']+=' '
+    os.environ['CPPFLAGS']+='-DWIN32_LEAN_AND_MEAN'
 
     if not 'LDFLAGS' in os.environ:
       os.environ['LDFLAGS']=''
@@ -478,6 +482,8 @@ class BuildModules(object):
     else:
       os.environ['CPPFLAGS']+=' '
     os.environ['CPPFLAGS']+='-I%s/tmp-roothost/include' % self.PREFIX
+    os.environ['CPPFLAGS']+=' '
+    os.environ['CPPFLAGS']+='-DWIN32_LEAN_AND_MEAN'
 
     if not 'LDFLAGS' in os.environ:
       os.environ['LDFLAGS']=''
