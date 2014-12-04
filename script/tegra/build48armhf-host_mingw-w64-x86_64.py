@@ -3,7 +3,7 @@
 import shutil
 from optparse import OptionParser
 
-PREFIX='~/gcc48tegra'
+PREFIX='~/gcc48tegra-mingw-w64-x86_64'
 TARGET='arm-linux-gnueabihf'
 SRCROOT='~/work/src_root'
 TARGETROOT='~/work/target_root/TegraLinuxR21.1.0'
