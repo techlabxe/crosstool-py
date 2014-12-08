@@ -114,6 +114,6 @@ Tegra Jetson TK1
 ```
  mkdir -p ~/work/build/tegra
  cd ~/work/build/tegra
- python ~/work/crosstool-py/script/tegra/build48armhf.py 2>&1 | tee _log48mipsel.txt
+ python ~/work/crosstool-py/script/tegra/build48armhf.py 2>&1 | tee _log48armhf.txt
 ```
 
