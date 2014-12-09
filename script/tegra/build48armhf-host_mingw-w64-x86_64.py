@@ -30,11 +30,11 @@ import crosstool_py.buildfunc
 import crosstool_py.buildmodules
 
 class Builder(crosstool_py.buildmodules.BuildModules):
-  def build_sysroot(self):
+  def build_sysroot(self,force_install=False):
     """
 #Tegra_Linux_Sample-Root-Filesystem_R21.1.0_armhf.tbz2
     """
-    super(Builder, self).build_sysroot()
+    super(Builder, self).build_sysroot(force_install)
 
     return 0
 

@@ -30,11 +30,11 @@ import crosstool_py.buildfunc
 import crosstool_py.buildmodules
 
 class Builder(crosstool_py.buildmodules.BuildModules):
-  def build_sysroot(self):
+  def build_sysroot(self,force_install=False):
     """
 #http://mipscreator.imgtec.com/CI20/images/default_NAND/Debian7_20140611/rootfs-20140625.tar
     """
-    super(Builder, self).build_sysroot()
+    super(Builder, self).build_sysroot(force_install)
 
 #    ## workaround multiarch
 #    workaround_multiarch=[]

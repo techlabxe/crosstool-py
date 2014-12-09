@@ -535,7 +535,7 @@ class BuildModules(object):
 
 
 
-  def build_sysroot(self):
+  def build_sysroot(self,force_install=False):
 
     build_dirname='sysroot'
     if not os.path.exists(build_dirname):
@@ -545,9 +545,10 @@ class BuildModules(object):
 
     cur_dir=os.getcwd()
     os.chdir(build_dirname)
-    if os.path.exists('_success_build.txt'):
-      os.chdir(cur_dir)
-      return 0
+    if False == force_install:
+      if os.path.exists('_success_build.txt'):
+        os.chdir(cur_dir)
+        return 0
 
     if os.path.exists( self.PREFIX + '/sys-root' ):
       shutil.rmtree( self.PREFIX + '/sys-root')
