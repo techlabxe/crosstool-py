@@ -106,16 +106,22 @@ def build_module( prefix, srcroot, module_name, build_dirname, module_ver, confi
 
   return retval
 
-def install_module( prefix, module_name, build_dirname ):
+def install_module( prefix, module_name, build_dirname, make_target='install' ):
   if not os.path.exists( build_dirname ):
     return 1
 
+  retval=0
+  cur_dir=os.getcwd()
+  os.chdir(build_dirname)
+
   cmd='make'
   args=[]
-  args.append('install')
+  args.append(make_target)
   retval=shell_cmd( prefix, cmd, False, args )
   if 0 != retval:
-    raise Exception('make install error %s' % module_name )
+    raise Exception('make %s error %s' % (make_target,build_dirname) )
+
+  os.chdir(cur_dir)
 
   return retval
 
