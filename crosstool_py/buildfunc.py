@@ -65,8 +65,40 @@ def build_module( prefix, srcroot, module_name, build_dirname, module_ver, confi
   cur_dir=os.getcwd()
   os.chdir(build_dirname)
   try:
-    if not os.path.exists('config.status'):
-      cmd=os.path.relpath(srcroot) + '/%s-%s/%sconfigure' % (module_name, module_ver, configure_module)
+    need_configure=False
+    cmd=os.path.relpath(srcroot) + '/%s-%s/%sconfigure' % (module_name, module_ver, configure_module)
+    args=' '.join(configure_args)
+
+    if os.path.exists('config.log'):
+      f = open('config.log','r')
+      lines = f.readlines()
+      f.close
+      for line in lines:
+        if not line.startswith('TOPLEVEL_CONFIGURE_ARGUMENTS='):
+          continue
+
+        line = line.rstrip()
+        work='TOPLEVEL_CONFIGURE_ARGUMENTS=\'' + cmd + ' ' + args + '\''
+        #print('line=%s' % line)
+        #print('work=%s' % work)
+        if line == work:
+          #print('need_configure=False')
+          need_configure=False
+          break
+        else:
+          #print('need_configure=True')
+          need_configure=True
+          break
+
+    if True == need_configure:
+      if os.path.exists('config.status')
+        os.remove('config.status')
+      for marker_textfile in glob.glob('_success_build_*.txt'):
+        os.remove(marker_textfile)
+      for marker_textfile in glob.glob('_success_install_*.txt'):
+        os.remove(marker_textfile)
+
+    if not os.path.exists('config.status') or not os.path.exists('Makefile'):
       retval=shell_cmd( prefix, cmd, False, configure_args )
       if 0 != retval:
         raise Exception('configure error')
