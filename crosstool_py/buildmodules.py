@@ -561,27 +561,35 @@ class BuildModules(object):
       if not os.path.exists( self.PREFIX + '/sys-root/usr/include/' + dir ):
         os.symlink( targetarch + '/' + dir, self.PREFIX + '/sys-root/usr/include/' + dir )
 
-    for so in glob.glob( self.PREFIX + '/sys-root/usr/lib/' + targetarch + '/*.so' ):
-      if not os.path.islink(so):
-        continue
+    sodirs=[]
+    sodirs.append( self.PREFIX + '/sys-root/lib' )
+    sodirs.append( self.PREFIX + '/sys-root/lib/' + targetarch )
+    sodirs.append( self.PREFIX + '/sys-root/usr/lib' )
+    sodirs.append( self.PREFIX + '/sys-root/usr/lib/' + targetarch )
+    for sodir in sodirs:
+      #print 'sodir=%s' % (sodir)
+      for so in glob.glob( sodir + '/*.so*' ):
+        #print 'so=%s' % (so)
+        if not os.path.islink(so):
+          continue
 
-      if not os.path.exists(so):
-        old_symlink=os.readlink(so)
-        #print '%s => %s' % (old_symlinlk)
-        destso=os.path.basename(os.readlink(so))
-        #print 'basename=%s' % (os.path.basename(so))
-        #print 'destso=%s' % (destso)
-        relpath=os.path.relpath(os.path.dirname( self.PREFIX + '/sys-root' + os.readlink(so)), os.path.dirname(so))
-        #print 'relpath=%s' % (relpath)
-        destlink=relpath + '/' + destso
-        print 'ln -s %s %s' % (destlink, so)
-        try:
-          os.unlink(so)
-          os.symlink( destlink, so )
-        except OSError:
-          os.symlink( old_symlink, so )
-      else:
-        continue
+        if not os.path.exists(so):
+          old_symlink=os.readlink(so)
+          #print '%s => %s' % (old_symlinlk)
+          destso=os.path.basename(os.readlink(so))
+          #print 'basename=%s' % (os.path.basename(so))
+          #print 'destso=%s' % (destso)
+          relpath=os.path.relpath(os.path.dirname( self.PREFIX + '/sys-root' + os.readlink(so)), os.path.dirname(so))
+          #print 'relpath=%s' % (relpath)
+          destlink=relpath + '/' + destso
+          print 'ln -s %s %s' % (destlink, so)
+          try:
+            os.unlink(so)
+            os.symlink( destlink, so )
+          except OSError:
+            os.symlink( old_symlink, so )
+        else:
+          continue
 
     if os.path.exists( self.PREFIX + '/sys-root/usr/lib/gcc' ):
       shutil.rmtree( self.PREFIX + '/sys-root/usr/lib/gcc' )
