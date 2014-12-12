@@ -91,7 +91,7 @@ def build_module( prefix, srcroot, module_name, build_dirname, module_ver, confi
           break
 
     if True == need_configure:
-      if os.path.exists('config.status')
+      if os.path.exists('config.status'):
         os.remove('config.status')
       for marker_textfile in glob.glob('_success_build_*.txt'):
         os.remove(marker_textfile)
