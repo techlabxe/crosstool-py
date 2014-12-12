@@ -568,22 +568,22 @@ class BuildModules(object):
     sodirs.append( self.PREFIX + '/sys-root/usr/lib' )
     sodirs.append( self.PREFIX + '/sys-root/usr/lib/' + targetarch )
     for sodir in sodirs:
-      #print 'sodir=%s' % (sodir)
+      #print('sodir=%s' % (sodir))
       for so in glob.glob( sodir + '/*.so*' ):
-        #print 'so=%s' % (so)
+        #print('so=%s' % (so))
         if not os.path.islink(so):
           continue
 
         if not os.path.exists(so):
           old_symlink=os.readlink(so)
-          #print '%s => %s' % (old_symlinlk)
+          #print('%s => %s' % (old_symlinlk))
           destso=os.path.basename(os.readlink(so))
-          #print 'basename=%s' % (os.path.basename(so))
-          #print 'destso=%s' % (destso)
+          #print('basename=%s' % (os.path.basename(so)))
+          #print('destso=%s' % (destso))
           relpath=os.path.relpath(os.path.dirname( self.PREFIX + '/sys-root' + os.readlink(so)), os.path.dirname(so))
-          #print 'relpath=%s' % (relpath)
+          #print('relpath=%s' % (relpath))
           destlink=relpath + '/' + destso
-          print 'ln -s %s %s' % (destlink, so)
+          print('ln -s %s %s' % (destlink, so))
           try:
             os.unlink(so)
             os.symlink( destlink, so )

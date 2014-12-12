@@ -115,7 +115,7 @@ def build_module( prefix, srcroot, module_name, build_dirname, module_ver, confi
         else:
           touch('_success_build_%s.txt' % make_target)
       else:
-        print 'skip %s build %s' % (make_target, build_dirname)
+        print('skip %s build %s' % (make_target, build_dirname))
 
     for make_target in make_target_install:
       if not os.path.exists('_success_install_%s.txt' % make_target):
@@ -128,7 +128,7 @@ def build_module( prefix, srcroot, module_name, build_dirname, module_ver, confi
         else:
           touch('_success_install_%s.txt' % make_target)
       else:
-        print 'skip install %s' % build_dirname
+        print('skip install %s' % build_dirname)
 
   except Exception as e:
     log(str(e))
