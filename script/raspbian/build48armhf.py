@@ -28,7 +28,7 @@ import crosstool_py.buildfunc
 import crosstool_py.buildmodules
 
 class Builder(crosstool_py.buildmodules.BuildModules):
-  def build_sysroot(self):
+  def build_sysroot(self,force_install=False):
     """
 # fdisk -lu 2012-12-16-wheezy-raspbian.img
 #  2012-12-16-wheezy-raspbian.img2          122880     3788799     1832960   83  Linux
@@ -40,7 +40,7 @@ class Builder(crosstool_py.buildmodules.BuildModules):
 # 122880*512=62914560
 # mount -o loop,offset=62914560 2014-09-09-wheezy-raspbian.img /mnt
     """
-    super(Builder, self).build_sysroot()
+    super(Builder, self).build_sysroot(force_install)
 
     if os.path.exists( self.PREFIX + '/sys-root/opt/vc' ):
       shutil.rmtree( self.PREFIX + '/sys-root/opt/vc' )
