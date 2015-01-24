@@ -592,6 +592,19 @@ class BuildModules(object):
     return 0
 
 
+  def cleanup_other_binaries(self):
+    print self.PREFIX
+    print self.TARGET
+    for f in glob.glob( self.PREFIX + '/bin/*' ) :
+      if f.endswith( '.exe' ) :
+        continue
+      if self.TARGET + '-gdbserver' in f :
+        continue
+      os.remove( f )
+      print f + ' removed'
+    
+    return 0
+
 
 if __name__ == '__main__':
   main()

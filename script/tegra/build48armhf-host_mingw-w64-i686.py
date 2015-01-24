@@ -163,8 +163,8 @@ class Builder(crosstool_py.buildmodules.BuildModules):
     retval=self.build_gdb_host( my_ver_gdb, extra_configure_args )
     if 0 != retval:
       raise Exception('build_gdb_host error')
-
-
+    
+    self.cleanup_other_binaries()
 
 def main():
   parser = OptionParser()
