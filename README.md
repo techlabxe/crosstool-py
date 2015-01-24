@@ -64,7 +64,7 @@ sudo sed -i".back" -e "s,//jp.archive.ubuntu.com,//ftp.jaist.ac.jp/pub/Linux,g" 
 |   |-- mpc-1.0.2
 |   |-- mpfr-3.1.2
 `-- target_root
-    |-- MIPSCreatorCI20
+    |-- MIPSCreatorCI20_20150115
     |-- raspbian20140909
     `-- TegraLinuxR21.2.0
 ```

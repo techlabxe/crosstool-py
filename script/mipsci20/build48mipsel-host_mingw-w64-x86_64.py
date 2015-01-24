@@ -6,7 +6,8 @@ from optparse import OptionParser
 PREFIX='~/gcc48mipsci20-mingw-w64-x86_64'
 TARGET='mipsel-linux-gnu'
 SRCROOT='~/work/src_root'
-TARGETROOT='~/work/target_root/MIPSCreatorCI20'
+TARGETROOT='~/work/target_root/MIPSCreatorCI20_20150115'
+
 
 my_ver_binutils='2.24'
 my_ver_gmp='5.1.3'
@@ -196,6 +197,7 @@ class Builder(crosstool_py.buildmodules.BuildModules):
       raise Exception('build_gdb_host error')
 
 
+    self.cleanup_other_binaries()
 
 
 
