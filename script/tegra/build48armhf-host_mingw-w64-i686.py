@@ -77,6 +77,7 @@ class Builder(crosstool_py.buildmodules.BuildModules):
 
 
     extra_configure_args=[]
+    extra_configure_args.extend( ['--enable-multiarch', '--disable-multilib', '--enable-targets=all' ] )
     extra_configure_args.extend( ['--with-arch=armv7-a', '--with-fpu=vfpv3-d16', '--with-float=hard', '--with-mode=thumb'] )
 
     retval=self.build_gcc_stage1( my_ver_gcc, extra_configure_args )
@@ -84,6 +85,7 @@ class Builder(crosstool_py.buildmodules.BuildModules):
       raise Exception('build_gcc_stage1 error')
 
     extra_configure_args=[]
+    extra_configure_args.extend( ['--enable-multiarch', '--disable-multilib', '--enable-targets=all' ] )
     extra_configure_args.extend( ['--with-arch=armv7-a', '--with-fpu=vfpv3-d16', '--with-float=hard', '--with-mode=thumb'] )
     retval=self.build_gcc_stage2( my_ver_gcc, extra_configure_args )
     if 0 != retval:
@@ -142,11 +144,13 @@ class Builder(crosstool_py.buildmodules.BuildModules):
     
     extra_configure_args=[]
     #extra_configure_args.append( '--enable-multiarch' )
-    extra_configure_args.append( '--disable-multiarch' )
+    #extra_configure_args.append( '--disable-multiarch' )
     extra_configure_args.append( '--with-float=hard' )
     extra_configure_args.extend( ['--with-arch=armv7-a', '--with-fpu=vfpv3-d16'] )
     extra_configure_args.append( '--with-mode=arm' )
     # extra_configure_args.append( '--with-mode=thumb' )
+    extra_configure_args.extend( ['--enable-multiarch', '--disable-multilib', '--enable-targets=all' ] )
+
     retval=self.build_gcc_stage1_host( my_ver_gcc, extra_configure_args )
     if 0 != retval:
       raise Exception('build_gcc_stage1_host error' )
