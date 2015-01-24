@@ -66,7 +66,7 @@ sudo sed -i".back" -e "s,//jp.archive.ubuntu.com,//ftp.jaist.ac.jp/pub/Linux,g" 
 `-- target_root
     |-- MIPSCreatorCI20
     |-- raspbian20140909
-    `-- TegraLinuxR21.1.0
+    `-- TegraLinuxR21.2.0
 ```
 
 # build

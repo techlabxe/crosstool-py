@@ -6,7 +6,7 @@ from optparse import OptionParser
 PREFIX='~/gcc48tegra-mingw-w64-x86_64'
 TARGET='arm-linux-gnueabihf'
 SRCROOT='~/work/src_root'
-TARGETROOT='~/work/target_root/TegraLinuxR21.1.0'
+TARGETROOT='~/work/target_root/TegraLinuxR21.2.0'
 
 my_ver_binutils='2.24'
 my_ver_gmp='5.1.3'
